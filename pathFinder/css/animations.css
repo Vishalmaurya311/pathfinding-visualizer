@@ -1,0 +1,105 @@
+/* Animations */
+
+/* Wall & Weight pops */
+@keyframes wall-pop {
+  0%   { transform: scale(0.3); border-radius: 50%; }
+  60%  { transform: scale(1.15); border-radius: 20%; }
+  100% { transform: scale(1); border-radius: 0; }
+}
+
+@keyframes weight-pop {
+  0%   { transform: scale(0.4) rotate(-20deg); }
+  70%  { transform: scale(1.2) rotate(8deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* Visited nodes */
+@keyframes visited-anim {
+  0% { transform: scale(0.3); background: var(--node-current); border-radius: 50%; }
+  50% { background: var(--node-visited-2); border-radius: 25%; }
+  75% { transform: scale(1.2); }
+  100% { transform: scale(1); background: var(--node-visited); border-radius: 0; }
+}
+
+@keyframes visited-anim-alt {
+  0% { transform: scale(0.3); background: var(--node-current); border-radius: 50%; }
+  50% { background: var(--node-visited); border-radius: 25%; }
+  75% { transform: scale(1.2); }
+  100% { transform: scale(1); background: var(--node-visited-2); border-radius: 0; }
+}
+
+/* Path animation */
+@keyframes path-anim {
+  0% { transform: scale(0.4); background: var(--node-current); border-radius: 50%; }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); background: var(--node-path); border-radius: 0; }
+}
+
+.cell--visited { background: var(--node-visited); }
+.cell--visited-alt { background: var(--node-visited-2); }
+.cell--path { background: var(--node-path); box-shadow: 0 0 6px var(--node-path); }
+
+/* Current node */
+@keyframes current-pulse {
+  0%, 100% { box-shadow: 0 0 6px 1px var(--node-current); }
+  50%      { box-shadow: 0 0 14px 4px var(--node-current); }
+}
+.cell--current { animation: current-pulse 700ms ease-in-out infinite; }
+
+/* Endpoints */
+@keyframes endpoint-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+.cell--start::after,
+.cell--end::after { animation: endpoint-breathe 2.4s ease-in-out infinite; }
+
+/* UI animations */
+@keyframes fade-slide-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.panel__section,
+.legend { animation: fade-slide-in var(--transition-slow) ease both; }
+
+/* Toasts */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(20px) translateX(-50%); }
+  to   { opacity: 1; transform: translateY(0) translateX(-50%); }
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  color: var(--text);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-toast);
+  font-size: var(--fs-sm);
+  animation: toast-in var(--transition-med) ease;
+  max-width: 90vw;
+}
+
+.toast--success { border-left-color: var(--success); }
+.toast--error   { border-left-color: var(--danger); }
+.toast--warning { border-left-color: var(--warning); }
+
+/* Disable animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+[data-motion="off"] .cell {
+  animation: none !important;
+  transition: none !important;
+}

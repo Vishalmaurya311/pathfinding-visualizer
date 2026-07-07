@@ -1,0 +1,139 @@
+/* Buttons & Controls */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn i { 
+  font-size: 0.9em; 
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--bg-elev-2);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) { 
+  transform: translateY(0); 
+}
+
+.btn:disabled { 
+  opacity: 0.4; 
+  cursor: not-allowed; 
+}
+
+/* Primary Button (Start) */
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--accent);
+  filter: brightness(1.12);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* Toggle Buttons (Educational / Compare) */
+.btn--toggle.active,
+.btn--toggle[aria-pressed="true"] {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #fff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 30%, transparent);
+}
+
+/* Icon Buttons (Sound etc) */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 40px; 
+  height: 40px;
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.icon-btn:hover { 
+  background: var(--bg-elev-2); 
+  border-color: var(--accent); 
+}
+
+.icon-btn.active,
+.icon-btn[aria-pressed="true"] { 
+  color: var(--accent); 
+  border-color: var(--accent); 
+}
+
+/* Custom Dropdowns */
+.select {
+  appearance: none;
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-5) var(--space-2) var(--space-3);
+  font-size: var(--fs-sm);
+  min-width: 150px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa3b2' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  transition: border-color var(--transition-fast);
+}
+
+.select:hover, 
+.select:focus { 
+  border-color: var(--accent); 
+}
+
+/* Range Slider */
+.range {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 140px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  outline: none;
+  margin-top: 6px;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; 
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg);
+  transition: transform var(--transition-fast);
+}
+
+.range::-webkit-slider-thumb:hover { 
+  transform: scale(1.2); 
+}
+
+.range::-moz-range-thumb {
+  width: 16px; 
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg);
+}

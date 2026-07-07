@@ -1,0 +1,180 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathfinding Visualizer</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/controls.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="topnav">
+    <div class="topnav__brand">
+      <i class="fa-solid fa-diagram-project"></i>
+      <span class="topnav__title">Pathfinding<span class="accent">Visualizer</span></span>
+    </div>
+
+    <nav class="topnav__controls">
+      <div class="control-group">
+        <label>Algorithm</label>
+        <select id="algorithm-select" class="select">
+          <option value="bfs">Breadth First Search</option>
+          <option value="dfs">Depth First Search</option>
+          <option value="dijkstra">Dijkstra</option>
+          <option value="astar">A* Search</option>
+          <option value="greedy">Greedy Best First</option>
+          <option value="bellmanFord">Bellman-Ford</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Maze</label>
+        <select id="maze-select" class="select">
+          <option value="none">— None —</option>
+          <option value="recursiveDivision">Recursive Division</option>
+          <option value="recursiveBacktracking">Recursive Backtracking</option>
+          <option value="prim">Prim's Maze</option>
+          <option value="binaryTree">Binary Tree</option>
+          <option value="randomMaze">Random Maze</option>
+          <option value="randomWalls">Random Walls</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Speed</label>
+        <select id="speed-select" class="select">
+          <option value="verySlow">Very Slow</option>
+          <option value="slow">Slow</option>
+          <option value="medium" selected>Medium</option>
+          <option value="fast">Fast</option>
+          <option value="veryFast">Very Fast</option>
+          <option value="instant">Instant</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Grid Size</label>
+        <input type="range" id="size-range" class="range" min="15" max="60" value="30" step="1">
+      </div>
+
+      <div class="control-group">
+        <label>Theme</label>
+        <select id="theme-select" class="select">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="cyberpunk">Cyberpunk</option>
+          <option value="dracula">Dracula</option>
+          <option value="nord">Nord</option>
+        </select>
+      </div>
+
+      <button id="sound-toggle" class="icon-btn" title="Toggle sound">
+        <i class="fa-solid fa-volume-xmark"></i>
+      </button>
+    </nav>
+  </header>
+
+  <section class="controlbar">
+    <button id="btn-start" class="btn btn--primary"><i class="fa-solid fa-play"></i> Start</button>
+    <button id="btn-pause" class="btn"><i class="fa-solid fa-pause"></i> Pause</button>
+    <button id="btn-resume" class="btn"><i class="fa-solid fa-forward-step"></i> Resume</button>
+    <button id="btn-stop" class="btn"><i class="fa-solid fa-stop"></i> Stop</button>
+    <button id="btn-replay" class="btn"><i class="fa-solid fa-rotate-right"></i> Replay</button>
+
+    <span class="controlbar__divider"></span>
+
+    <button id="btn-clear-path" class="btn"><i class="fa-solid fa-broom"></i> Clear Path</button>
+    <button id="btn-clear-walls" class="btn"><i class="fa-solid fa-trash"></i> Clear Walls</button>
+    <button id="btn-reset" class="btn"><i class="fa-solid fa-arrows-rotate"></i> Reset</button>
+
+    <span class="controlbar__divider"></span>
+
+    <button id="btn-random-weights" class="btn"><i class="fa-solid fa-weight-hanging"></i> Weights</button>
+    <button id="btn-random-start" class="btn"><i class="fa-solid fa-location-dot"></i> Random Start</button>
+    <button id="btn-random-end" class="btn"><i class="fa-solid fa-flag-checkered"></i> Random End</button>
+
+    <span class="controlbar__divider"></span>
+
+    <button id="btn-educational" class="btn btn--toggle">
+      <i class="fa-solid fa-graduation-cap"></i> Educational
+    </button>
+    <button id="btn-compare" class="btn btn--toggle">
+      <i class="fa-solid fa-code-compare"></i> Compare
+    </button>
+  </section>
+
+  <main class="layout">
+    
+    <aside class="panel panel--left">
+      <div class="panel__section" id="stats-panel">
+        <h2 class="panel__title"><i class="fa-solid fa-chart-simple"></i> Statistics</h2>
+        <ul class="stats">
+          <li><span>Algorithm</span><b id="stat-algo">—</b></li>
+          <li><span>Visited Nodes</span><b id="stat-visited">0</b></li>
+          <li><span>Nodes Explored</span><b id="stat-explored">0</b></li>
+          <li><span>Path Length</span><b id="stat-path">0</b></li>
+          <li><span>Execution Time</span><b id="stat-time">0 ms</b></li>
+          <li><span>Memory (est.)</span><b id="stat-memory">0 KB</b></li>
+          <li><span>Wall Count</span><b id="stat-walls">0</b></li>
+          <li><span>Weight Count</span><b id="stat-weights">0</b></li>
+          <li><span>Grid Size</span><b id="stat-grid">—</b></li>
+          <li><span>Speed</span><b id="stat-speed">Medium</b></li>
+        </ul>
+      </div>
+
+      <div class="panel__section" id="complexity-panel">
+        <h2 class="panel__title"><i class="fa-solid fa-square-root-variable"></i> Complexity</h2>
+        <div id="complexity-content" class="complexity">
+          <p class="muted">Select an algorithm to see analysis.</p>
+        </div>
+      </div>
+    </aside>
+
+    <section class="stage">
+      <div id="grid-container" class="grid-container">
+        <div id="main-grid" class="grid" tabindex="0"></div>
+        <div id="compare-grid" class="grid grid--hidden"></div>
+      </div>
+
+      <div class="legend">
+        <span class="legend__item"><i class="node-swatch node-swatch--start"></i> Start</span>
+        <span class="legend__item"><i class="node-swatch node-swatch--end"></i> End</span>
+        <span class="legend__item"><i class="node-swatch node-swatch--wall"></i> Wall</span>
+        <span class="legend__item"><i class="node-swatch node-swatch--weight"></i> Weight</span>
+        <span class="legend__item"><i class="node-swatch node-swatch--visited"></i> Visited</span>
+        <span class="legend__item"><i class="node-swatch node-swatch--path"></i> Path</span>
+        <span class="legend__item"><i class="node-swatch node-swatch--checkpoint"></i> Checkpoint</span>
+      </div>
+    </section>
+
+    <aside class="panel panel--right">
+      <div class="panel__section">
+        <h2 class="panel__title"><i class="fa-solid fa-book-open"></i> Educational</h2>
+        <div id="edu-content" class="edu">
+          <p class="muted">Enable <b>Educational Mode</b> and run an algorithm to see step-by-step explanations.</p>
+          <div class="edu__ds" id="edu-ds" hidden>
+            <div class="edu__block"><h4>Current Node</h4><code id="edu-current">—</code></div>
+            <div class="edu__block"><h4>Neighbors</h4><code id="edu-neighbors">—</code></div>
+            <div class="edu__block"><h4>Data Structure</h4><pre id="edu-structure">—</pre></div>
+            <div class="edu__block"><h4>Explanation</h4><p id="edu-explain">—</p></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <p>Pathfinding & Sorting Algorithm Visualizer</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

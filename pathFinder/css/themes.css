@@ -1,0 +1,281 @@
+/* ============================================================
+   THEMES — each theme overrides color tokens on [data-theme].
+   Consumed everywhere via var(--token).
+   ============================================================ */
+
+/* ---------- DARK (default) ---------- */
+[data-theme="dark"] {
+  --bg: #0f1115;
+  --bg-elev: #171a21;
+  --bg-elev-2: #1f232c;
+  --border: #2a2f3a;
+  --text: #e6e9ef;
+  --text-dim: #9aa3b2;
+  --accent: #4f8cff;
+  --accent-2: #7c5cff;
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
+
+  --node-empty: #171a21;
+  --node-grid-line: #262b34;
+  --node-start: #22c55e;
+  --node-end: #ef4444;
+  --node-wall: #334155;
+  --node-weight: #f59e0b;
+  --node-visited: #3b82f6;
+  --node-visited-2: #06b6d4;
+  --node-current: #facc15;
+  --node-path: #fde047;
+  --node-checkpoint: #a855f7;
+}
+
+/* ---------- LIGHT ---------- */
+[data-theme="light"] {
+  --bg: #f4f6fb;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #eef1f7;
+  --border: #d7deea;
+  --text: #1a2233;
+  --text-dim: #64748b;
+  --accent: #2563eb;
+  --accent-2: #7c3aed;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+
+  --node-empty: #ffffff;
+  --node-grid-line: #e2e8f0;
+  --node-start: #16a34a;
+  --node-end: #dc2626;
+  --node-wall: #334155;
+  --node-weight: #d97706;
+  --node-visited: #60a5fa;
+  --node-visited-2: #22d3ee;
+  --node-current: #f59e0b;
+  --node-path: #fbbf24;
+  --node-checkpoint: #9333ea;
+}
+
+/* ---------- CYBERPUNK ---------- */
+[data-theme="cyberpunk"] {
+  --bg: #0a0014;
+  --bg-elev: #14002b;
+  --bg-elev-2: #1e0140;
+  --border: #ff00c8;
+  --text: #f8f8ff;
+  --text-dim: #b48ce0;
+  --accent: #00f0ff;
+  --accent-2: #ff00c8;
+  --success: #00ff9f;
+  --danger: #ff2965;
+  --warning: #ffe600;
+
+  --node-empty: #14002b;
+  --node-grid-line: #33006b;
+  --node-start: #00ff9f;
+  --node-end: #ff2965;
+  --node-wall: #ff00c8;
+  --node-weight: #ffe600;
+  --node-visited: #00f0ff;
+  --node-visited-2: #ff00c8;
+  --node-current: #ffe600;
+  --node-path: #ffe600;
+  --node-checkpoint: #b400ff;
+}
+
+/* ---------- DRACULA ---------- */
+[data-theme="dracula"] {
+  --bg: #282a36;
+  --bg-elev: #2f3240;
+  --bg-elev-2: #383b4a;
+  --border: #44475a;
+  --text: #f8f8f2;
+  --text-dim: #a3a7b8;
+  --accent: #bd93f9;
+  --accent-2: #ff79c6;
+  --success: #50fa7b;
+  --danger: #ff5555;
+  --warning: #f1fa8c;
+
+  --node-empty: #2f3240;
+  --node-grid-line: #44475a;
+  --node-start: #50fa7b;
+  --node-end: #ff5555;
+  --node-wall: #6272a4;
+  --node-weight: #ffb86c;
+  --node-visited: #8be9fd;
+  --node-visited-2: #bd93f9;
+  --node-current: #f1fa8c;
+  --node-path: #f1fa8c;
+  --node-checkpoint: #ff79c6;
+}
+
+/* ---------- NORD ---------- */
+[data-theme="nord"] {
+  --bg: #2e3440;
+  --bg-elev: #3b4252;
+  --bg-elev-2: #434c5e;
+  --border: #4c566a;
+  --text: #eceff4;
+  --text-dim: #a9b3c4;
+  --accent: #88c0d0;
+  --accent-2: #81a1c1;
+  --success: #a3be8c;
+  --danger: #bf616a;
+  --warning: #ebcb8b;
+
+  --node-empty: #3b4252;
+  --node-grid-line: #4c566a;
+  --node-start: #a3be8c;
+  --node-end: #bf616a;
+  --node-wall: #4c566a;
+  --node-weight: #d08770;
+  --node-visited: #88c0d0;
+  --node-visited-2: #81a1c1;
+  --node-current: #ebcb8b;
+  --node-path: #ebcb8b;
+  --node-checkpoint: #b48ead;
+}
+
+/* ---------- SOLARIZED ---------- */
+[data-theme="solarized"] {
+  --bg: #002b36;
+  --bg-elev: #073642;
+  --bg-elev-2: #0a4553;
+  --border: #14515f;
+  --text: #eee8d5;
+  --text-dim: #93a1a1;
+  --accent: #268bd2;
+  --accent-2: #6c71c4;
+  --success: #859900;
+  --danger: #dc322f;
+  --warning: #b58900;
+
+  --node-empty: #073642;
+  --node-grid-line: #0f4c59;
+  --node-start: #859900;
+  --node-end: #dc322f;
+  --node-wall: #586e75;
+  --node-weight: #cb4b16;
+  --node-visited: #268bd2;
+  --node-visited-2: #2aa198;
+  --node-current: #b58900;
+  --node-path: #b58900;
+  --node-checkpoint: #d33682;
+}
+
+/* ---------- GITHUB DARK ---------- */
+[data-theme="github-dark"] {
+  --bg: #0d1117;
+  --bg-elev: #161b22;
+  --bg-elev-2: #21262d;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-dim: #8b949e;
+  --accent: #58a6ff;
+  --accent-2: #bc8cff;
+  --success: #3fb950;
+  --danger: #f85149;
+  --warning: #d29922;
+
+  --node-empty: #161b22;
+  --node-grid-line: #30363d;
+  --node-start: #3fb950;
+  --node-end: #f85149;
+  --node-wall: #484f58;
+  --node-weight: #d29922;
+  --node-visited: #388bfd;
+  --node-visited-2: #58a6ff;
+  --node-current: #d29922;
+  --node-path: #e3b341;
+  --node-checkpoint: #bc8cff;
+}
+
+/* ---------- MATRIX ---------- */
+[data-theme="matrix"] {
+  --bg: #000700;
+  --bg-elev: #001a00;
+  --bg-elev-2: #002600;
+  --border: #00ff41;
+  --text: #b6ffb6;
+  --text-dim: #4caf50;
+  --accent: #00ff41;
+  --accent-2: #00b32d;
+  --success: #00ff41;
+  --danger: #ff3131;
+  --warning: #d4ff00;
+
+  --node-empty: #001a00;
+  --node-grid-line: #003b00;
+  --node-start: #00ff41;
+  --node-end: #ff3131;
+  --node-wall: #00802b;
+  --node-weight: #d4ff00;
+  --node-visited: #00b32d;
+  --node-visited-2: #00ff41;
+  --node-current: #d4ff00;
+  --node-path: #baff00;
+  --node-checkpoint: #00ffd0;
+}
+
+/* ---------- OCEAN ---------- */
+[data-theme="ocean"] {
+  --bg: #041c32;
+  --bg-elev: #04293a;
+  --bg-elev-2: #064663;
+  --border: #0a5578;
+  --text: #ecf8ff;
+  --text-dim: #8fbcd4;
+  --accent: #38bdf8;
+  --accent-2: #22d3ee;
+  --success: #2dd4bf;
+  --danger: #fb7185;
+  --warning: #fcd34d;
+
+  --node-empty: #04293a;
+  --node-grid-line: #075173;
+  --node-start: #2dd4bf;
+  --node-end: #fb7185;
+  --node-wall: #0a5578;
+  --node-weight: #fcd34d;
+  --node-visited: #38bdf8;
+  --node-visited-2: #22d3ee;
+  --node-current: #fcd34d;
+  --node-path: #fde68a;
+  --node-checkpoint: #a78bfa;
+}
+
+/* ---------- FOREST ---------- */
+[data-theme="forest"] {
+  --bg: #0c1f13;
+  --bg-elev: #12301d;
+  --bg-elev-2: #1a4028;
+  --border: #245536;
+  --text: #eaf5ec;
+  --text-dim: #9fc6a9;
+  --accent: #4ade80;
+  --accent-2: #a3e635;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #eab308;
+
+  --node-empty: #12301d;
+  --node-grid-line: #1f4a2e;
+  --node-start: #4ade80;
+  --node-end: #ef4444;
+  --node-wall: #2f6b41;
+  --node-weight: #eab308;
+  --node-visited: #22c55e;
+  --node-visited-2: #a3e635;
+  --node-current: #facc15;
+  --node-path: #fde047;
+  --node-checkpoint: #c084fc;
+}
+
+/* High contrast overlay (accessibility) */
+[data-contrast="high"] {
+  --border: #ffffff;
+  --text: #ffffff;
+  --node-grid-line: #ffffff;
+}

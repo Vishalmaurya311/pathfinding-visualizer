@@ -1,0 +1,116 @@
+/* Grid Layout */
+.grid {
+  display: grid;
+  gap: 0;
+  background: var(--node-grid-line);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1px;
+  user-select: none;
+  touch-action: none; 
+  box-shadow: var(--shadow-md);
+  width: max-content;
+  max-width: 100%;
+}
+
+.grid--hidden { 
+  display: none; 
+}
+
+/* Comparison Mode */
+.grid-container.is-comparing .grid { 
+  transform: scale(1); 
+}
+
+/* Cell Base */
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background: var(--node-empty);
+  border: 1px solid var(--node-grid-line);
+  position: relative;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  display: grid;
+  place-items: center;
+  font-size: 0.7em;
+  color: rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+}
+
+.cell:hover {
+  background: color-mix(in srgb, var(--accent) 22%, var(--node-empty));
+  z-index: 1;
+}
+
+/* Cell States */
+.cell--wall {
+  background: var(--node-wall);
+  animation: wall-pop var(--transition-med) ease-out;
+}
+
+.cell--weight {
+  background: var(--node-weight);
+  animation: weight-pop var(--transition-med) ease-out;
+}
+
+.cell--weight::after {
+  content: "\f24e";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 0.75em;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.cell--visited {
+  animation: visited-anim var(--transition-slow) ease-out forwards;
+}
+
+.cell--visited-alt {
+  animation: visited-anim-alt var(--transition-slow) ease-out forwards;
+}
+
+.cell--current {
+  background: var(--node-current) !important;
+  box-shadow: 0 0 8px 2px var(--node-current);
+  z-index: 3;
+}
+
+.cell--path {
+  animation: path-anim var(--transition-med) ease-out forwards;
+}
+
+/* Start, End & Checkpoints */
+.cell--start,
+.cell--end,
+.cell--checkpoint {
+  z-index: 4;
+  cursor: grab;
+}
+
+.cell--start { background: var(--node-start); }
+.cell--end { background: var(--node-end); }
+.cell--checkpoint { background: var(--node-checkpoint); }
+
+.cell--start::after,
+.cell--end::after,
+.cell--checkpoint::after {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 0.8em;
+  color: #fff;
+}
+
+.cell--start::after { content: "\f04b"; }
+.cell--end::after { content: "\f11e"; }
+.cell--checkpoint::after { content: "\f005"; }
+
+/* Dragging States */
+.cell.dragging { 
+  cursor: grabbing; 
+}
+
+.cell--drag-hover {
+  outline: 2px dashed var(--accent);
+  outline-offset: -2px;
+}
